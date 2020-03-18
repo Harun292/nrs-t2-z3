@@ -1,5 +1,8 @@
 package ba.unsa.etf.rpr;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -9,6 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class ZnamenitostController {
     public TextField fieldNazivZnamenitosti;
@@ -37,14 +41,28 @@ public class ZnamenitostController {
         Stage s= (Stage) fieldNazivZnamenitosti.getScene().getWindow();
         s.close();
     }
-    public void odaberiSliku(){
-        TextInputDialog izbor= new TextInputDialog();
-        izbor.setTitle("Izaberite sliku");
-        putanja=izbor.showAndWait().get();
-        System.out.println(putanja);
+    public void odaberiSliku() throws IOException {
+        Stage stage = new Stage();
+        Parent root;
         try {
-            imageViewZnamenitosti.setImage(new Image(new FileInputStream(putanja)));
-        } catch (FileNotFoundException e) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pretraga.fxml"));
+            PretragaController pretragaController = new PretragaController();
+            loader.setController(pretragaController);
+            root = loader.load();
+            stage.setTitle("Traži");
+            stage.setScene(new Scene(root));
+            stage.setResizable(true);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                putanja = pretragaController.getPutanja();
+                try {
+                    imageViewZnamenitosti.setImage(new Image(new FileInputStream(putanja)));
+                } catch (FileNotFoundException e) {
+                    //..
+                }
+            });
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

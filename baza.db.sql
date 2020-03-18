@@ -25,7 +25,7 @@ INSERT INTO `drzava` VALUES (3,'Austrija',3);
 CREATE TABLE IF NOT EXISTS `znamenitosti` (
     `id`	INTEGER,
     `naziv`	TEXT,
-    `slika` TEXT,
+    `putanja` TEXT,
     `grad_id`	INTEGER,
     PRIMARY KEY(`id`)
 );

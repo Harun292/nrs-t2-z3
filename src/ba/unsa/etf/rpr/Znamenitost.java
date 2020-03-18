@@ -6,7 +6,7 @@ public class Znamenitost {
     private String naziv;
     private Grad grad;
 
-    public Znamenitost(int id, String putanja, String naziv, Grad grad) {
+    public Znamenitost(int id, String naziv, String putanja, Grad grad) {
         this.id = id;
         this.putanja = putanja;
         this.naziv = naziv;
@@ -50,6 +50,6 @@ public class Znamenitost {
 
     @Override
     public String toString() {
-        return naziv;
+        return this.naziv;
     }
 }
