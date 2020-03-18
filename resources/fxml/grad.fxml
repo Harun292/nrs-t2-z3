@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<?import javafx.scene.control.ListView?>
 <GridPane hgap="5.0" vgap="5.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
       <URL value="@/css/forme.css" />
@@ -42,6 +43,11 @@
       </ButtonBar>
       <Label text="Poštanski broj:" GridPane.rowIndex="3" />
       <TextField fx:id="fieldPostanskiBroj" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label layoutX="20.0" layoutY="25.0" text="Znamenitosti" GridPane.columnIndex="2" GridPane.halignment="CENTER"/>
+      <ListView fx:id="listViewZnamenitosti" prefHeight="125.0" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                GridPane.rowSpan="4"/>
+      <Button fx:id="btnDodajZnamenitost" mnemonicParsing="false" text="Dodaj Znamenitost" GridPane.columnIndex="2"
+              GridPane.halignment="CENTER" GridPane.rowIndex="5" onAction="#dodajZnamenitost"/>
    </children>
    <opaqueInsets>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

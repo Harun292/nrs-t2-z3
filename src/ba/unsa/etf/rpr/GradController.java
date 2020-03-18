@@ -3,11 +3,17 @@ package ba.unsa.etf.rpr;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.testfx.api.FxRobot;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,10 +29,15 @@ public class GradController {
     public ObservableList<Drzava> listDrzave;
     public TextField fieldPostanskiBroj;
     private Grad grad;
+    private GeografijaDAO dao;
+    public ListView<Znamenitost> listViewZnamenitosti;
+    public ObservableList<Znamenitost> listaZnamenitosti;
 
     public GradController(Grad grad, ArrayList<Drzava> drzave) {
         this.grad = grad;
         listDrzave = FXCollections.observableArrayList(drzave);
+        listaZnamenitosti= FXCollections.observableArrayList(grad.getZnamenitosti());
+        dao=GeografijaDAO.getInstance();
     }
 
     @FXML
@@ -44,6 +55,7 @@ public class GradController {
         } else {
             choiceDrzava.getSelectionModel().selectFirst();
         }
+        listViewZnamenitosti.setItems(listaZnamenitosti);
     }
 
     public Grad getGrad() {
@@ -128,5 +140,34 @@ public class GradController {
             }
         });
         t.start();
+    }
+    public void dodajZnamenitost() {
+        if (grad == null) return;
+        Stage stage = new Stage();
+        Parent root;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/znamenitosti.fxml"));
+            ZnamenitostController znamenitostController = new ZnamenitostController(grad);
+            loader.setController(znamenitostController);
+            root = loader.load();
+            stage.setTitle("Znamenitost");
+            stage.setScene(new Scene(root));
+            stage.setResizable(true);
+            stage.show();
+
+            stage.setOnHiding(event -> {
+                Znamenitost znamenitost = znamenitostController.getZnanemitost();
+                if (znamenitost != null) {
+                    dao.dodajZnamenitost(znamenitost);
+                    grad.getZnamenitosti().add(znamenitost);
+                    listaZnamenitosti.setAll(grad.getZnamenitosti());
+                    listViewZnamenitosti.refresh();
+                }
+
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
