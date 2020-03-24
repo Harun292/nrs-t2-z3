@@ -58,11 +58,14 @@ public class ZnamenitostController {
 
             stage.setOnHiding(event -> {
                 putanja = pretragaController.getPutanja();
-                try {
-                    imageViewZnamenitosti.setImage(new Image(new FileInputStream(putanja)));
-                } catch (FileNotFoundException e) {
-                    //..
+                if(putanja!=null){
+                    try {
+                        imageViewZnamenitosti.setImage(new Image(new FileInputStream(putanja)));
+                    } catch (FileNotFoundException e) {
+                        //..
+                    }
                 }
+
             });
         } catch (IOException e) {
             e.printStackTrace();

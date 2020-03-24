@@ -132,14 +132,20 @@ public class GlavnaController {
 
     public void actionObrisiGrad(ActionEvent actionEvent) {
         Grad grad = tableViewGradovi.getSelectionModel().getSelectedItem();
-        if (grad == null) return;
-
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Potvrda brisanja");
-        alert.setHeaderText("Brisanje grada "+grad.getNaziv());
-        alert.setContentText("Da li ste sigurni da želite obrisati grad " +grad.getNaziv()+"?");
-        alert.setResizable(true);
-
+        if (grad == null) return;
+        if(Locale.getDefault().equals(new Locale("en","us"))){
+            alert.setTitle("Deleting confirmation");
+            alert.setHeaderText("Deleting city "+grad.getNaziv());
+            alert.setContentText("You are about to delete city " +grad.getNaziv()+". Are you sure?");
+            alert.setResizable(true);
+        }
+        else{
+            alert.setTitle("Potvrda brisanja");
+            alert.setHeaderText("Brisanje grada "+grad.getNaziv());
+            alert.setContentText("Da li ste sigurni da želite obrisati grad " +grad.getNaziv()+"?");
+            alert.setResizable(true);
+        }
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             dao.obrisiGrad(grad);
@@ -165,22 +171,50 @@ public class GlavnaController {
     }
     public void actionJezik() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Jezika");
-        alert.setHeaderText("Odabir jezika");
-        alert.setContentText("Odaberite jezik");
+        ButtonType buttonTypeOne;
+        ButtonType buttonTypeTwo;
+        if(Locale.getDefault().equals(new Locale("en","US"))){
+            alert.setTitle("Language");
+            alert.setHeaderText("Language selection");
+            alert.setContentText("Choose your option.");
 
-        ButtonType buttonTypeOne = new ButtonType("Bosanski");
-        ButtonType buttonTypeTwo = new ButtonType("Engleski");
+            buttonTypeOne = new ButtonType("Bosnian");
+            buttonTypeTwo = new ButtonType("English");
 
-        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+        }
+        else {
+            alert.setTitle("Jezik");
+            alert.setHeaderText("Odabir jezika");
+            alert.setContentText("Odaberite jezik");
+
+            buttonTypeOne = new ButtonType("Bosanski");
+            buttonTypeTwo = new ButtonType("Engleski");
+
+            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+        }
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeOne) {
-            System.out.println("cao");
             Locale.setDefault(new Locale("bs", "BA"));
+            Stage s=(Stage)tableViewGradovi.getScene().getWindow();
+            s.close();
+            Main m=new Main();
+            try {
+                m.start(s);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else if (result.get() == buttonTypeTwo) {
-            System.out.println("cccc");
             Locale.setDefault(new Locale("en", "US"));
+            Stage s=(Stage)tableViewGradovi.getScene().getWindow();
+            s.close();
+            Main m=new Main();
+            try {
+                m.start(s);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
