@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class GradController {
@@ -36,7 +37,7 @@ public class GradController {
     public GradController(Grad grad, ArrayList<Drzava> drzave) {
         this.grad = grad;
         listDrzave = FXCollections.observableArrayList(drzave);
-        listaZnamenitosti= FXCollections.observableArrayList(grad.getZnamenitosti());
+        if(grad!=null) listaZnamenitosti= FXCollections.observableArrayList(grad.getZnamenitosti());
         dao=GeografijaDAO.getInstance();
     }
 
@@ -146,7 +147,8 @@ public class GradController {
         Stage stage = new Stage();
         Parent root;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/znamenitosti.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Prevod");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/znamenitosti.fxml"),bundle);
             ZnamenitostController znamenitostController = new ZnamenitostController(grad);
             loader.setController(znamenitostController);
             root = loader.load();

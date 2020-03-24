@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class ZnamenitostController {
     public TextField fieldNazivZnamenitosti;
@@ -45,7 +46,8 @@ public class ZnamenitostController {
         Stage stage = new Stage();
         Parent root;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pretraga.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Prevod");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pretraga.fxml"),bundle);
             PretragaController pretragaController = new PretragaController();
             loader.setController(pretragaController);
             root = loader.load();

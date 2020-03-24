@@ -18,6 +18,7 @@ import net.sf.jasperreports.engine.JRException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -161,5 +162,25 @@ public class GlavnaController {
             e.printStackTrace();
         }
 
+    }
+    public void actionJezik() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Jezika");
+        alert.setHeaderText("Odabir jezika");
+        alert.setContentText("Odaberite jezik");
+
+        ButtonType buttonTypeOne = new ButtonType("Bosanski");
+        ButtonType buttonTypeTwo = new ButtonType("Engleski");
+
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeOne) {
+            System.out.println("cao");
+            Locale.setDefault(new Locale("bs", "BA"));
+        } else if (result.get() == buttonTypeTwo) {
+            System.out.println("cccc");
+            Locale.setDefault(new Locale("en", "US"));
+        }
     }
 }
