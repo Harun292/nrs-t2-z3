@@ -148,4 +148,9 @@ public class GlavnaController {
         dbfile.delete();
         dao = GeografijaDAO.getInstance();
     }
+
+    public void actionStampa(){
+
+
+    }
 }
