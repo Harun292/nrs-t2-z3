@@ -12,7 +12,7 @@ public class GradoviReport extends JFrame {
     private static final long serialVersionUID = 1L;
 
     public void showReport(Connection conn) throws JRException {
-        String reportSrcFile = getClass().getResource("/reports/biblioteka.jrxml").getFile();
+        String reportSrcFile = getClass().getResource("/reports/gradovi.jrxml").getFile();
         String reportsDir = getClass().getResource("/reports/").getFile();
 
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
