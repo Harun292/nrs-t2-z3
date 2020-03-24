@@ -6,17 +6,18 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<?import javafx.scene.control.ListView?>
 <GridPane hgap="5.0" vgap="5.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
       <URL value="@/css/forme.css" />
    </stylesheets>
    <columnConstraints>
+      <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
    </columnConstraints>
@@ -29,11 +30,11 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Label text="Naziv:" />
+      <Label text="%naziv_g" />
       <TextField fx:id="fieldNaziv" GridPane.columnIndex="1" />
-      <Label text="Broj stanovnika:" GridPane.rowIndex="1" />
+      <Label text="%br_stan_g" GridPane.rowIndex="1" />
       <TextField fx:id="fieldBrojStanovnika" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Label text="Država:" GridPane.rowIndex="2" />
+      <Label text="%drzava_g" GridPane.rowIndex="2" />
       <ChoiceBox fx:id="choiceDrzava" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
          <buttons>
@@ -41,13 +42,11 @@
             <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#clickCancel" text="Cancel" />
          </buttons>
       </ButtonBar>
-      <Label text="Poštanski broj:" GridPane.rowIndex="3" />
+      <Label text="%postanski_g" GridPane.rowIndex="3" />
       <TextField fx:id="fieldPostanskiBroj" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Label layoutX="20.0" layoutY="25.0" text="Znamenitosti" GridPane.columnIndex="2" GridPane.halignment="CENTER"/>
-      <ListView fx:id="listViewZnamenitosti" prefHeight="125.0" GridPane.columnIndex="2" GridPane.rowIndex="1"
-                GridPane.rowSpan="4"/>
-      <Button fx:id="btnDodajZnamenitost" mnemonicParsing="false" text="Dodaj Znamenitost" GridPane.columnIndex="2"
-              GridPane.halignment="CENTER" GridPane.rowIndex="5" onAction="#dodajZnamenitost"/>
+      <Label layoutX="20.0" layoutY="25.0" text="%znamenitosti_g" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+      <ListView fx:id="listViewZnamenitosti" prefHeight="125.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="4" />
+      <Button fx:id="btnDodajZnamenitost" mnemonicParsing="false" onAction="#dodajZnamenitost" text="%dodaj_znam_g" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
    </children>
    <opaqueInsets>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

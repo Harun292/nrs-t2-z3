@@ -22,7 +22,7 @@
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
-        <Label text="Uzorak:">
+        <Label text="%uzorak_p">
             <HBox.margin>
                 <Insets right="10.0" />
             </HBox.margin>
@@ -32,12 +32,12 @@
                 <Insets right="10.0" />
             </HBox.margin>
         </TextField>
-        <Button mnemonicParsing="false" onAction="#traziAction" text="Traži">
+        <Button mnemonicParsing="false" onAction="#traziAction" text="%trazi_p">
             <HBox.margin>
                 <Insets right="10.0" />
             </HBox.margin>
         </Button>
-        <Button layoutX="261.0" layoutY="20.0" mnemonicParsing="false" onAction="#izaberiFajlAction" text="Izaberi fajl" />
+        <Button layoutX="261.0" layoutY="20.0" mnemonicParsing="false" onAction="#izaberiFajlAction" text="%odaberi_p" />
     </HBox>
     <ListView fx:id="listViewPretraga" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
         <GridPane.margin>

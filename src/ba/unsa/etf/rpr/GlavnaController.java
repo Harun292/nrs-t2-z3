@@ -19,6 +19,7 @@ import net.sf.jasperreports.engine.JRException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -50,7 +51,8 @@ public class GlavnaController {
         Stage stage = new Stage();
         Parent root = null;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/grad.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Prevod");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/grad.fxml"),bundle);
             GradController gradController = new GradController(null, dao.drzave());
             loader.setController(gradController);
             root = loader.load();
@@ -76,7 +78,8 @@ public class GlavnaController {
         Stage stage = new Stage();
         Parent root = null;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/drzava.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Prevod");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/drzava.fxml"),bundle);
             DrzavaController drzavaController = new DrzavaController(null, dao.gradovi());
             loader.setController(drzavaController);
             root = loader.load();
@@ -104,7 +107,8 @@ public class GlavnaController {
         Stage stage = new Stage();
         Parent root = null;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/grad.fxml"));
+            ResourceBundle bundle = ResourceBundle.getBundle("Prevod");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/grad.fxml"),bundle);
             GradController gradController = new GradController(grad, dao.drzave());
             loader.setController(gradController);
             root = loader.load();

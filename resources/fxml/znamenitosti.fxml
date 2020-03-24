@@ -20,11 +20,11 @@
         <RowConstraints minHeight="10.0" />
         <RowConstraints minHeight="10.0" />
     </rowConstraints>
-      <Button mnemonicParsing="false" onAction="#spasiIzmjene" prefHeight="25.0" prefWidth="248.0" text="Spasi izmjene" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button mnemonicParsing="false" onAction="#spasiIzmjene" prefHeight="25.0" prefWidth="248.0" text="%spasi_z" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
       <GridPane.margin>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </GridPane.margin></Button>
-    <Label text="Naziv:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <Label text="%naziv_z" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <GridPane.margin>
             <Insets bottom="10.0" left="10.0" top="10.0" />
         </GridPane.margin>
@@ -34,7 +34,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </GridPane.margin>
     </TextField>
-      <Button mnemonicParsing="false" onAction="#odaberiSliku" text="Odaberi sliku" GridPane.rowIndex="2">
+      <Button mnemonicParsing="false" onAction="#odaberiSliku" text="%odaberi_z" GridPane.rowIndex="2">
       <GridPane.margin>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </GridPane.margin></Button>
