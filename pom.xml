@@ -18,7 +18,7 @@
                 <version>2.4</version>
                 <configuration>
                     <archive>
-                        <manifestFile>C:\Users\ESAD-PC\IdeaProjects\nrs-t2-z3\resources\META-INF\MANIFEST.MF</manifestFile>
+                        <manifestFile>resources\META-INF\MANIFEST.MF</manifestFile>
                     </archive>
                 </configuration>
             </plugin>
